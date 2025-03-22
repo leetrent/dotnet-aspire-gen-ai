@@ -1,5 +1,22 @@
 var builder = DistributedApplication.CreateBuilder(args);
 
-builder.AddProject<Projects.Catalog>("catalog");
+////////////////////////////////////////////////////////////////////////////////
+// BACKING SERVICES
+////////////////////////////////////////////////////////////////////////////////
+var postgres = builder
+    .AddPostgres("postgres")
+    .WithPgAdmin()
+    .WithDataVolume()
+    .WithLifetime(ContainerLifetime.Persistent);
+
+var catalogDb = postgres.AddDatabase("catalogdb");
+
+////////////////////////////////////////////////////////////////////////////////
+// PROJECTS
+////////////////////////////////////////////////////////////////////////////////
+builder
+    .AddProject<Projects.Catalog>("catalog")
+    .WithReference(catalogDb)
+    .WaitFor(catalogDb);
 
 builder.Build().Run();
