@@ -10,6 +10,13 @@ var app = builder.Build();
 
 app.MapDefaultEndpoints();
 
+if (app.Environment.IsDevelopment())
+{
+    app.UseMigration();
+}
+
+
+
 // Configure the HTTP request pipeline.
 
 app.UseHttpsRedirection();
