@@ -4,6 +4,8 @@ builder.AddServiceDefaults();
 
 // Add services to the container.
 
+builder.AddNpgsqlDbContext<ProductDbContext>(connectionName: "catalogDb");
+
 var app = builder.Build();
 
 app.MapDefaultEndpoints();
