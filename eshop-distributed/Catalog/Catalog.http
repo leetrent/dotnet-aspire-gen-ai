@@ -1,16 +1,16 @@
 @Catalog_HostAddress = https://localhost:7125/products
 
-GET {{Catalog_HostAddress}}/products/
+GET {{Catalog_HostAddress}}
 Accept: application/json
 
 ###
 
-GET {{Catalog_HostAddress}}/products/1
+GET {{Catalog_HostAddress}}/10
 Accept: application/json
 
 ###
 
-POST {{Catalog_HostAddress}}/products/
+POST {{Catalog_HostAddress}}
 Content-Type: application/json
 {
     "id": 10,
@@ -22,7 +22,7 @@ Content-Type: application/json
 
 ###
 
-PUT {{Catalog_HostAddress}}/products/10
+PUT {{Catalog_HostAddress}}/10
 Content-Type: application/json
 {
     "name": "UPDATED Battery Powered Flashlight",
@@ -31,7 +31,9 @@ Content-Type: application/json
     "imageUrl": "product10.png"
 }
 
-DELETE {{Catalog_HostAddress}}/products/10
+###
+
+DELETE {{Catalog_HostAddress}}/10
 Content-Type: application/json
 
 ###
