@@ -11,6 +11,13 @@ var postgres = builder
 
 var catalogDb = postgres.AddDatabase("catalogdb");
 
+var cache = builder
+    .AddRedis("cache") // Assuming AddRedis is part of Aspire.Hosting
+    .WithRedisInsight()
+    .WithDataVolume()
+    .WithLifetime(ContainerLifetime.Persistent);
+
+
 ////////////////////////////////////////////////////////////////////////////////
 // PROJECTS
 ////////////////////////////////////////////////////////////////////////////////
@@ -19,6 +26,9 @@ builder
     .WithReference(catalogDb)
     .WaitFor(catalogDb);
 
-builder.AddProject<Projects.Basket>("basket");
+builder
+    .AddProject<Projects.Basket>("basket")
+    .WithReference(cache)
+    .WaitFor(cache);
 
 builder.Build().Run();
