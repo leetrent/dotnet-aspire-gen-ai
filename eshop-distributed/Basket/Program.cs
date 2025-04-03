@@ -4,8 +4,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.AddServiceDefaults();
 builder.AddRedisDistributedCache(connectionName: "cache"); // ConnectionStrings__cache
-
-// Add services to the container.
+builder.Services.AddScoped<BasketService>();
 
 var app = builder.Build();
 
