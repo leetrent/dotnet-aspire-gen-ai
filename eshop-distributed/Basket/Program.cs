@@ -1,6 +1,9 @@
+using Microsoft.AspNetCore.Connections.Features;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.AddServiceDefaults();
+builder.AddRedisDistributedCache(connectionName: "cache"); // ConnectionStrings__cache
 
 // Add services to the container.
 
