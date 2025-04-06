@@ -21,7 +21,7 @@ var cache = builder
 ////////////////////////////////////////////////////////////////////////////////
 // PROJECTS
 ////////////////////////////////////////////////////////////////////////////////
-builder
+var catalog = builder
     .AddProject<Projects.Catalog>("catalog")
     .WithReference(catalogDb)
     .WaitFor(catalogDb);
@@ -29,6 +29,7 @@ builder
 builder
     .AddProject<Projects.Basket>("basket")
     .WithReference(cache)
+    .WithReference(catalog)
     .WaitFor(cache);
 
 builder.Build().Run();
