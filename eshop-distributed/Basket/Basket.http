@@ -28,6 +28,38 @@ Content-Type: application/json
 
 ###
 
+POST {{Basket_HostAddress}}
+Content-Type: application/json
+{
+    "UserName": "leetrent",
+    "Items": [
+        {
+        "Quantity": 3,
+        "Color": "Red",
+        "Price": 0,
+        "ProductId": 1,
+        "ProductName": "Solar Powered Flashlight"
+        },
+        {
+        "Quantity": 4,
+        "Color": "Blue",
+        "Price": 0,
+        "ProductId": 2,
+        "ProductName": "Hiking Poles"
+        },
+        {
+        "Quantity": 5,
+        "Color": "Blue",
+        "Price": 0,
+        "ProductId": 9,
+        "ProductName": "Camping Tent"
+        }
+    ]
+}
+
+###
+
+
 DELETE {{Basket_HostAddress}}/leetrent
 Content-Type: application/json
 
