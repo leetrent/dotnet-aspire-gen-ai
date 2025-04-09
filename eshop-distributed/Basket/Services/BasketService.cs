@@ -1,9 +1,10 @@
-﻿using Microsoft.Extensions.Caching.Distributed;
+﻿using Catalog.Models;
+using Microsoft.Extensions.Caching.Distributed;
 using System.Text.Json;
 
 namespace Basket.Services
 {
-    public class BasketService(IDistributedCache cache)
+    public class BasketService(IDistributedCache cache, CatalogApiClient catalogApiClient)
     {
         public async Task<ShoppingCart?> GetBasket(string userName)
         {
@@ -15,9 +16,18 @@ namespace Basket.Services
             return JsonSerializer.Deserialize<ShoppingCart>(basket);
         }
 
-        public async Task UpdateBasket(ShoppingCart basket)
+        public async Task UpdateBasket(ShoppingCart shoppingCart)
         {
-            await cache.SetStringAsync(basket.UserName, JsonSerializer.Serialize(basket));
+            foreach (ShoppingCartItem scItem in shoppingCart.Items)
+            {
+                Product? product = await catalogApiClient.GetProductById(scItem.ProductId);
+                if (product != null) // Ensure product is not null before accessing its properties
+                {
+                    scItem.Price = product.Price;
+                    scItem.ProductName = product.Name;
+                }
+            }
+            await cache.SetStringAsync(shoppingCart.UserName, JsonSerializer.Serialize(shoppingCart));
         }
 
         public async Task DeleteBasket(string userName)

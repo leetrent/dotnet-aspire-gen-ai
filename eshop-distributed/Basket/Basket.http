@@ -1,6 +1,6 @@
 @Basket_HostAddress = https://localhost:7259/basket
 
-GET {{Basket_HostAddress}}/leetrent/
+GET {{Basket_HostAddress}}/leetrent
 Accept: application/json
 
 ###
@@ -12,14 +12,14 @@ Content-Type: application/json
         {
         "Quantity": 2,
         "Color": "Red",
-        "Price": 500,
+        "Price": 0,
         "ProductId": 1,
         "ProductName": "Solar Powered Flashlight"
         },
         {
         "Quantity": 1,
         "Color": "Blue",
-        "Price": 500,
+        "Price": 0,
         "ProductId": 2,
         "ProductName": "Hiking Poles"
         }

@@ -6,7 +6,7 @@ namespace Basket.ApiClients
     {
         public async Task<Product?> GetProductById(int id)
         {
-            return await httpClient.GetFromJsonAsync<Product>($"/catalog/{id}");
+            return await httpClient.GetFromJsonAsync<Product>($"/products/{id}");
          
         }
     }
