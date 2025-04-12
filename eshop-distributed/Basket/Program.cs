@@ -1,5 +1,3 @@
-//using Microsoft.AspNetCore.Connections.Features;
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.AddServiceDefaults();
@@ -10,6 +8,8 @@ builder.Services.AddHttpClient<CatalogApiClient>(client =>
 {
     client.BaseAddress = new("https+http://catalog");
 });
+
+builder.Services.AddMassTransitWithAssemblies(Assembly.GetExecutingAssembly());
 
 var app = builder.Build();
 
