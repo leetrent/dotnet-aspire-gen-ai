@@ -34,5 +34,16 @@ namespace Basket.Services
         {
             await cache.RemoveAsync(userName);
         }
+        
+        internal async Task UpdateBasketItemProductPrices(int productId, decimal price)
+        {
+            var shopptingCart = await this.GetBasket("leetrent");
+            var shopptingCartItem = shopptingCart!.Items.FirstOrDefault(x => x.ProductId == productId);
+            if (shopptingCartItem != null)
+            {
+                shopptingCartItem.Price = price;
+                await cache.SetStringAsync(shopptingCart.UserName, JsonSerializer.Serialize(shopptingCart));
+            }   
+        }
     }
 }
