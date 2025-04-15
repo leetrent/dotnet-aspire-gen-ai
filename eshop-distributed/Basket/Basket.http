@@ -1,11 +1,14 @@
 @Basket_HostAddress = https://localhost:7259/basket
+@accessToken = eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI5cW5oNzRXNlBSVkh1bTlURlZNNWlDcmdkcjBDeVNIVmx5LXRXZ29VVmZFIn0.eyJleHAiOjE3NDQ3MzU1MzQsImlhdCI6MTc0NDczNTIzNCwianRpIjoiNWQ0YTExYjQtZjhlNy00M2MwLWI0YTMtYmU1MzViMTRhYTcyIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL3JlYWxtcy9lc2hvcCIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiI4NjU4NGUxZi1mMWE3LTQzYmQtOWU5ZS0xNjEzYTA3YWVmYTkiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJlc2hvcC1jbGllbnQiLCJzaWQiOiJhMWI4YTkxNC0zMGM4LTQyMzUtOGMxMi01Y2I5ZmNiNzE3MzQiLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbIi8qIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJvZmZsaW5lX2FjY2VzcyIsInVtYV9hdXRob3JpemF0aW9uIiwiZGVmYXVsdC1yb2xlcy1lc2hvcCJdfSwicmVzb3VyY2VfYWNjZXNzIjp7ImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoib3BlbmlkIGVtYWlsIHByb2ZpbGUiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwibmFtZSI6InRlc3QgdGVzdCIsInByZWZlcnJlZF91c2VybmFtZSI6InRlc3QiLCJnaXZlbl9uYW1lIjoidGVzdCIsImZhbWlseV9uYW1lIjoidGVzdCIsImVtYWlsIjoidGVzdEB0ZXN0LmNvbSJ9.dFFQW7e1XqLJ0nc77r_5k42A77o411ZK6NDnyPnIUyq_Tsw7T3s8jCzfQHm3Li7akLHwapfzQwBbOpdcWpGaLewRm6iWSuDFld39yPGAxF0fSWfG9gnwL4vUn_he6UKHosvkKkIR3pWWUKD90PJDJpJryE4cD-kIih-SSeVMvWunBXX3azaGoexd1f0I19t66OrIB2ctFOGH41m5a8RQwiOIIrvAdxzPGgRe0tqecJmdrmmmsJc2op1v2lwZYgv0C4QlSMXSzHJ0qwZZNrNGaQ3mIeVFBi_pf8S9mSzvPISKplPfetcFLsnsSrr75RDyp_DU_s5BNzHTWsIstu3gew
 
 GET {{Basket_HostAddress}}/leetrent
 Accept: application/json
+Authorization: Bearer {{accessToken}}
 
 ###
 POST {{Basket_HostAddress}}
 Content-Type: application/json
+Authorization: Bearer {{accessToken}}
 {
     "UserName": "leetrent",
     "Items": [
@@ -30,6 +33,7 @@ Content-Type: application/json
 
 POST {{Basket_HostAddress}}
 Content-Type: application/json
+Authorization: Bearer {{accessToken}}
 {
     "UserName": "leetrent",
     "Items": [
@@ -62,6 +66,8 @@ Content-Type: application/json
 
 DELETE {{Basket_HostAddress}}/leetrent
 Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
 
 ###
 
