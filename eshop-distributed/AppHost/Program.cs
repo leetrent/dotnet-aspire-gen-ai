@@ -6,7 +6,7 @@ var builder = DistributedApplication.CreateBuilder(args);
 var postgres = builder
     .AddPostgres("postgres")
     .WithPgAdmin()
-    .WithDataVolume()
+    //.WithDataVolume()
     .WithLifetime(ContainerLifetime.Persistent);
 
 var catalogDb = postgres.AddDatabase("catalogdb");
@@ -14,19 +14,31 @@ var catalogDb = postgres.AddDatabase("catalogdb");
 var cache = builder
     .AddRedis("cache") // Assuming AddRedis is part of Aspire.Hosting
     .WithRedisInsight()
-    .WithDataVolume()
+    //.WithDataVolume()
     .WithLifetime(ContainerLifetime.Persistent);
 
 var rabbitmq = builder
     .AddRabbitMQ("rabbitmq")
     .WithManagementPlugin()
-    .WithDataVolume()
+    //.WithDataVolume()
     .WithLifetime(ContainerLifetime.Persistent);
 
 var keycloak = builder
     .AddKeycloak("keycloak", 8080)
-    .WithDataVolume()
+    //.WithDataVolume()
     .WithLifetime(ContainerLifetime.Persistent);
+
+////////////////////////////////////////////////////
+// DATA VOLUMES DO NOT WORK IN AZURE CONTAINER APPS
+// ONLY USE DATA VOLUMES WHEN RUNNING LOCALLY
+////////////////////////////////////////////////////
+if (builder.ExecutionContext.IsRunMode)
+{
+    postgres.WithDataVolume();
+    cache.WithDataVolume();
+    rabbitmq.WithDataVolume();
+    keycloak.WithDataVolume();
+}
 
 
 ////////////////////////////////////////////////////////////////////////////////

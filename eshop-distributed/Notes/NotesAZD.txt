@@ -1,0 +1,62 @@
+$ azd version
+
+$ azd auth login
+Logged in to Azure as lee.trent@TrentTEK.com
+
+$ azd init
+
+$ azd up
+
+? Select an Azure Subscription to use:  1. Azure subscription 1 (8f176884-6a0e-40d1-a529-01bbf9ddd9db)
+? Enter a value for the 'location' infrastructure parameter:  [Use arrows to move, type to filter]
+  44. (South America) Brazil Southeast (brazilsoutheast)
+  45. (US) Central US (centralus)
+  46. (US) East US (eastus)
+> 47. (US) East US 2 (eastus2)
+  48. (US) North Central US (northcentralus)
+  49. (US) South Central US (southcentralus)
+  50. (US) West Central US (westcentralus)
+
+
+leetr@Lee-Laptop-LG MINGW64 ~/Lee/Learning/SoftwareDev/MehmetOzkaya/.NETAspireGenAI/Repo/dotnet-aspire-gen-ai/eshop-distributed (azure-container-apps)
+$ azd up
+
+Packaging services (azd package)
+
+
+Provisioning Azure resources (azd provision)
+Provisioning Azure resources can take some time.
+
+Subscription: Azure subscription 1 (8f176884-6a0e-40d1-a529-01bbf9ddd9db)
+Location: East US 2
+
+  (-) Skipped: Didn't find new changes.
+
+Deploying services (azd deploy)
+
+  (✓) Done: Deploying service basket
+  - Endpoint: https://basket.internal.livelyglacier-b82547e9.eastus2.azurecontainerapps.io/
+
+  (✓) Done: Deploying service cache
+  - Endpoint: https://cache.internal.livelyglacier-b82547e9.eastus2.azurecontainerapps.io/
+
+  (✓) Done: Deploying service catalog
+  - Endpoint: https://catalog.internal.livelyglacier-b82547e9.eastus2.azurecontainerapps.io/
+
+  (✓) Done: Deploying service keycloak
+  - Endpoint: https://keycloak.internal.livelyglacier-b82547e9.eastus2.azurecontainerapps.io/
+
+  (✓) Done: Deploying service postgres
+  - Endpoint: https://postgres.internal.livelyglacier-b82547e9.eastus2.azurecontainerapps.io/
+
+  (✓) Done: Deploying service rabbitmq
+  - Endpoint: https://rabbitmq.internal.livelyglacier-b82547e9.eastus2.azurecontainerapps.io/
+
+  (✓) Done: Deploying service webapp
+  - Endpoint: https://webapp.livelyglacier-b82547e9.eastus2.azurecontainerapps.io/
+
+  Aspire Dashboard: https://aspire-dashboard.ext.livelyglacier-b82547e9.eastus2.azurecontainerapps.io
+
+SUCCESS: Your up workflow to provision and deploy to Azure completed in 2 minutes 42 seconds.
+
+leetr@Lee-Laptop-LG MINGW64 ~/Lee/Learning/SoftwareDev/MehmetOzkaya/.NETAspireGenAI/Repo/dotnet-aspire-gen-ai/eshop-distributed (azure-container-apps)
