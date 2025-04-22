@@ -13,5 +13,10 @@ namespace WebApp.ApiClients
         {
             return await httpClient.GetFromJsonAsync<Product>($"/products/{id}");
         }
+
+        public async Task<string?> SupportProducts(string query)
+        {
+            return await httpClient.GetFromJsonAsync<string>($"/products/support/{query}");
+        }
     }
 }
