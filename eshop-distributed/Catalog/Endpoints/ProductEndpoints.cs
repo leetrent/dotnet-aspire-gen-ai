@@ -98,6 +98,28 @@ namespace Catalog.Endpoints
             })
             .WithName("Support")
             .Produces(StatusCodes.Status200OK);
+
+            /////////////////////////////////////////////////////////////////////
+            /// TRADITIONAL SEARCH
+            /////////////////////////////////////////////////////////////////////
+            groupBuilder.MapGet("/search/{query}", async (string query, ProductService service) =>
+            {
+                var response = await service.SearchProductsAsync(query);
+                return Results.Ok(response);
+            })
+            .WithName("SearchProducts")
+            .Produces(StatusCodes.Status200OK);
+
+            /////////////////////////////////////////////////////////////////////
+            /// AI SEARCH
+            /////////////////////////////////////////////////////////////////////
+            groupBuilder.MapGet("/aisearch/{query}", async (string query, ProductAIService service) =>
+            {
+                var response = await service.SearchProductsAsync(query);
+                return Results.Ok(response);
+            })
+            .WithName("AISearchProducts")
+            .Produces(StatusCodes.Status200OK);
         }
 
     }
