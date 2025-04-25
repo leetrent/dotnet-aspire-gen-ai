@@ -18,5 +18,15 @@ namespace WebApp.ApiClients
         {
             return await httpClient.GetFromJsonAsync<string>($"/products/support/{query}");
         }
+
+        public async Task<List<Product>?> SearchProducts(string query, bool aiSearch)
+        {
+            if (aiSearch)
+            {
+                return await httpClient.GetFromJsonAsync<List<Product>>($"/products/aisearch/{query}");
+            }
+
+            return await httpClient.GetFromJsonAsync<List<Product>>($"/products/search/{query}");
+        }
     }
 }
